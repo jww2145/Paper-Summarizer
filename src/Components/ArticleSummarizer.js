@@ -26,7 +26,7 @@ const handleUrlChange = (e) => {
   return (
     <form onSubmit={handleSubmit} className="link-form">
         <input onChange={handleUrlChange} value={url} placeholder="Enter Article Link" type="text"/>
-        <input type="submit" valiue="send new article" />
+        <input type="submit" value="send new article" />
     </form>
   )
 }
