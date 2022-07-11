@@ -9,11 +9,13 @@ function ArticleSummarizer({summary, setSummary, postArticle}) {
     const [url, setUrl] = useState('')
 
     function handleSubmit(e) {
+
         e.preventDefault();
 
         const newArticle = {url: url}
 
         postArticle(newArticle)
+        console.log(newArticle.url)
     }
 
 

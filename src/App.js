@@ -8,20 +8,19 @@ import Navbar from "./Components/Navbar"
 
 
 
+
+
 function App() {
 
 const [summary, setSummary] = useState([])
 
-
 const postArticle = (newArticle) => {
-  fetch(`http://api.intellexer.com/[POST method]?apikey={6aa05dd9-099d-477b-8a57-3d1f405cfd5a}&options={options}`, {
-      method: 'POST',
-      headers: {'Content-type': 'application/json'},
-      body: JSON.stringify(newArticle)
-    })
+  fetch(`http://api.intellexer.com/summarize?apikey=${process.env.REACT_APP_API_KEY}&conceptsRestrictions=7&url=${newArticle.url}`)
     .then(res => res.json())
-    .then(newSummary => setSummary(newSummary))
+    .then(newSummary => console.log(newSummary))
+    
   }
+  
 
 
 
@@ -31,7 +30,7 @@ const postArticle = (newArticle) => {
       
       <Routes>
 
-      <Route path='/home' element={<Home/>} />
+      <Route path='/' element={<Home/>} />
       <Route path='/about' element={<About/>} />
       <Route path='*' element={<Fourohfour/>} />
 
