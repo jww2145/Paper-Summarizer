@@ -5,6 +5,7 @@ import Home from "./Components/Home";
 import About from "./Components/About";
 import Fourohfour from "./Components/Fourohfour";
 import Navbar from "./Components/Navbar"
+import ArticleContainer from "./Components/ArticleContainer";
 
 
 
@@ -15,7 +16,7 @@ function App() {
 const [summary, setSummary] = useState([])
 
 const postArticle = (newArticle) => {
-  fetch(`http://api.intellexer.com/summarize?apikey=${process.env.REACT_APP_API_KEY}&conceptsRestrictions=7&url=${newArticle.url}`)
+  fetch(`http://api.intellexer.com/summarize?apikey=${process.env.REACT_APP_API_KEY}&conceptsRestrictions=7&summaryRestriction=7&url=${newArticle.url}`)
     .then(res => res.json())
     .then(newSummary => console.log(newSummary))
     
@@ -38,10 +39,11 @@ const postArticle = (newArticle) => {
       <h1>
         Research Helper
       </h1>
-      <ArticleSummarizer summary={summary} setSummary={setSummary} postArticle={postArticle}/>
-
+      <ArticleSummarizer  postArticle={postArticle}/>
+     
     </div>
   );
 }
+{/* <ArticleContainer summary={summary} setSummary={setSummary}/> */}
 
 export default App;

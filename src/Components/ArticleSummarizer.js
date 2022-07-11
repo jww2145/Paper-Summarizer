@@ -4,7 +4,7 @@ import React, {useState, UseEffect} from 'react'
 
 
 
-function ArticleSummarizer({summary, setSummary, postArticle}) {
+function ArticleSummarizer({postArticle}) {
 
     const [url, setUrl] = useState('')
 
@@ -23,11 +23,15 @@ const handleUrlChange = (e) => {
     setUrl(e.target.value)
 }
 
+
   return (
-    <form onSubmit={handleSubmit} className="link-form">
-        <input onChange={handleUrlChange} value={url} placeholder="Enter Article Link" type="text"/>
-        <input type="submit" valiue="send new article" />
-    </form>
+    <div>
+        <form onSubmit={handleSubmit} className="link-form">
+            <input onChange={handleUrlChange} value={url} placeholder="Enter Article Link" type="text"/>
+            <input type="submit" valiue="send new article" />
+        </form>
+
+    </div>
   )
 }
 
