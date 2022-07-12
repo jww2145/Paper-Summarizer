@@ -10,7 +10,6 @@ function ArticleSummarizer({postArticle}) {
       e.preventDefault();
       const newArticle = {url: url}
       postArticle(newArticle)
-      console.log(newArticle.url)
   }
 
   const handleUrlChange = (e) => {
@@ -18,7 +17,7 @@ function ArticleSummarizer({postArticle}) {
   }
 
   return (
-    <div>
+    <div className='container-child-1'>
       <h3>Drop an URL</h3>
       <form onSubmit={handleSubmit} className="link-form">
         <input onChange={handleUrlChange} value={url} placeholder="Enter Article Link" type="text"/>

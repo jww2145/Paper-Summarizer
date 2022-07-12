@@ -27,10 +27,10 @@ function App() {
         }
       })
     }
-  const summarizePaste = (body) => {
+  const summarizePaste = (article) => {
       fetch(`https://api.intellexer.com/summarizeText?apikey=${process.env.REACT_APP_API_KEY}&conceptsRestriction=7&returnedTopicsCount=2&summaryRestriction=7&textStreamLength=1000`,{
           method: 'POST',
-          body: JSON.stringify(body)
+          body: JSON.stringify(article)
       })
       .then(res => res.json())
       .then(data => {
@@ -56,11 +56,13 @@ function App() {
         </Routes>
 
         <Container>
-          <ArticleSummarizer id = 'articleSummarizer'  postArticle={postArticle}/>
-          <PostArticle id = 'postArticle' body={body} setBody={setBody} summarizePaste={summarizePaste}/>
+
+          <ArticleSummarizer id = 'articleSummarizer'postArticle={postArticle}/>
+          <ArticleContainer summarizedText = {urlOrCopy}/>
         </Container>
 
-        <ArticleContainer summarizedText = {urlOrCopy}/>
+        <PostArticle id = 'postArticle' body={body} setBody={setBody} summarizePaste={summarizePaste}/>
+
       </div>
     );
 }

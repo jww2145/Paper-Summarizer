@@ -5,10 +5,10 @@ import Sentence from './Sentence'
 
 function ArticleContainer({summarizedText}) {
 
-  const showSummary = summarizedText.map(item => <Sentence item={item} />)
+  const showSummary = summarizedText.map(item => <Sentence key = {item.rank} item={item} />)
 
   return (
-    <div className='ArticleContainer'>
+    <div className='container-child-2'>
         {showSummary}
     </div>
   )

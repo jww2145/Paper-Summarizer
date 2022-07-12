@@ -8,6 +8,7 @@ body {
     background-color: #EAE6DF;
     color: #2d2d2b;
     text-align: center;
+    width:100%;
 }
 
 h1{
@@ -16,3 +17,36 @@ h1{
     color:#B8926A;
     -webkit-text-stroke: rgba(45, 45, 43, .35) 1px;
 }
+.container-child-1{
+    width:30%;
+}
+.container-child-2{
+    width: 60%;
+    padding:2%;
+    font-size:12pt;
+}
+
+input[type = submit]{
+    display:block;
+    margin:auto;
+    margin-top: 5%;
+}
+
+#largeForm{
+    width:50%;
+    height:300px;
+    background-color: #d4c8be;
+    color:#2d2d2b;
+}
+
+textarea {
+    scrollbar-face-color: #ff8c00;
+    scrollbar-track-color: #fff8dc;
+    scrollbar-arrow-color: #ffffff;
+    scrollbar-highlight-color: #fff8dc;
+    scrollbar-shadow-color: #d2691e;
+    scrollbar-3dlight-color: #ffebcd;
+    scrollbar-darkshadow-color: #8b0000;
+    }
+    
+
