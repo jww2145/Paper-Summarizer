@@ -3,14 +3,9 @@ import Sentence from './Sentence'
 
 
 
-<<<<<<< HEAD
-function ArticleContainer({summarizedText, rank}) {
-  console.log(rank)
-=======
-function ArticleContainer({summarizedText}) {
->>>>>>> c1f3df82b21becce14f15f1c655181d95c0d5205
+function ArticleContainer({summarizedText, summary}) {
 
-  const showSummary = summarizedText.map(item => <Sentence key = {item.rank} item={item} />)
+  const showSummary = summary.map(item => <Sentence key = {item.rank} item={item} />)
 
   return (
     <div className='container-child-2'>

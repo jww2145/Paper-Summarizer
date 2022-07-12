@@ -26,6 +26,12 @@ h1{
     font-size:12pt;
 }
 
+.container-child-3{
+    width: 60%;
+    padding:2%;
+    font-size:12pt;
+}
+
 input[type = submit]{
     display:block;
     margin:auto;

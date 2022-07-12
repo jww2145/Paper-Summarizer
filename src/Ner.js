@@ -18,7 +18,7 @@ const handleUrlChange = (e) => {
 
   return (
     <div>
-        <h1>Named Entity Recognizer</h1>
+        <h3>Named Entity Recognizer</h3>
         <form onSubmit={handleSubmit} className='ner-form'>
             <input value={ner} onChange={handleUrlChange} />
             <input type="submit" value="Recognize" />

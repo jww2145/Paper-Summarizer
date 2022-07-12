@@ -16,7 +16,7 @@ function PasteText({summarizePaste}){
     return(
         <form onSubmit = {(e) => handleSubmit(e)}>
             <textarea id = 'largeForm' value = {article} onChange = {(e) => handleForm(e)} />
-            <input type="submit" value="Paste Text" />
+            <input type="submit" value="Get Text Summary" />
         </form>
     )
 }
