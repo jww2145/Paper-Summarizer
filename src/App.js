@@ -56,7 +56,6 @@ function App() {
         </Routes>
 
         <Container>
-
           <ArticleSummarizer id = 'articleSummarizer'postArticle={postArticle}/>
           <ArticleContainer summarizedText = {urlOrCopy}/>
         </Container>
