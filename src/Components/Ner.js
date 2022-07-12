@@ -11,7 +11,6 @@ function NER({recognizeEntity}) {
         recognizeEntity(newEntity)
     }
 
-
 const handleUrlChange = (e) => {
     setNer(e.target.value)
 }
