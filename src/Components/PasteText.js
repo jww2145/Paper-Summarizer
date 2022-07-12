@@ -4,7 +4,6 @@ function PasteText({body, setBody, summarizePaste}){
 
     function handleForm(e){
         setBody(e.target.value)
-        
     }
 
     function handleSubmit(e){

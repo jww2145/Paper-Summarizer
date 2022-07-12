@@ -4,23 +4,18 @@ import React, {useState} from 'react'
 
 function ArticleSummarizer({postArticle}) {
 
-    const [url, setUrl] = useState('')
+  const [url, setUrl] = useState('')
 
-    function handleSubmit(e) {
+  function handleSubmit(e) {
+      e.preventDefault();
+      const newArticle = {url: url}
+      postArticle(newArticle)
+      console.log(newArticle.url)
+  }
 
-        e.preventDefault();
-
-        const newArticle = {url: url}
-
-        postArticle(newArticle)
-        console.log(newArticle.url)
-    }
-
-
-const handleUrlChange = (e) => {
+  const handleUrlChange = (e) => {
     setUrl(e.target.value)
-}
-
+  }
 
   return (
     <form onSubmit={handleSubmit} className="link-form">

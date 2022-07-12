@@ -13,25 +13,20 @@ import PostArticle from "./Components/PostArticle"
 
 
 function App() {
-
-const [summary, setSummary] = useState([])
-
-
-
-const postArticle = (newArticle) => {
-  fetch(`http://api.intellexer.com/summarize?apikey=${process.env.REACT_APP_API_KEY}&conceptsRestrictions=7&summaryRestriction=7&url=${newArticle.url}`)
-    .then(res => res.json())
-    .then(newSummary => {
-      if(newSummary.items){
-        console.log(newSummary.items);
-        setSummary(newSummary.items)
-        setUrl(true)
-      }
-    })
-  }
-
+  const [summary, setSummary] = useState([])
   const [body, setBody] = useState([])
+  const [urlOrText, setUrlOrText] = useState(true)
 
+  const postArticle = (newArticle) => {
+    fetch(`http://api.intellexer.com/summarize?apikey=${process.env.REACT_APP_API_KEY}&conceptsRestrictions=7&summaryRestriction=7&url=${newArticle.url}`)
+      .then(res => res.json())
+      .then(newSummary => {
+        if(newSummary.items){
+          setSummary(newSummary.items)
+          setUrlOrText(true)
+        }
+      })
+    }
   const summarizePaste = (body) => {
       fetch(`https://api.intellexer.com/summarizeText?apikey=${process.env.REACT_APP_API_KEY}&conceptsRestriction=7&returnedTopicsCount=2&summaryRestriction=7&textStreamLength=1000`,{
           method: 'POST',
@@ -40,40 +35,32 @@ const postArticle = (newArticle) => {
       .then(res => res.json())
       .then(data => {
         if(data.items){
-          console.log(data.items)
           setBody(data.items)
-          setUrl(false)
+          setUrlOrText(false)
         }
       })
-  }
-  
- console.log(body)
+    }
 
- const [url, setUrl] = useState(true)
+  const urlOrCopy = urlOrText ? summary : body
 
- const urlOrCopy = url ? summary : body
+    return (
+      <div className="originDiv">
+        <Routes>
 
+        <Route path='/' element={<Home/>} />
+        <Route path='/about' element={<About/>} />
+        <Route path='*' element={<Fourohfour/>} />
 
+        </Routes>
+        <h1>
+          Research Helper
+        </h1>
+        <ArticleSummarizer  postArticle={postArticle}/>
 
-  return (
-    <div className="originDiv">
-      <Routes>
-
-      <Route path='/' element={<Home/>} />
-      <Route path='/about' element={<About/>} />
-      <Route path='*' element={<Fourohfour/>} />
-
-      </Routes>
-      <h1>
-        Research Helper
-      </h1>
-      <ArticleSummarizer  postArticle={postArticle}/>
-
-      <PostArticle body={body} setBody={setBody} summarizePaste={summarizePaste}/>
-      <ArticleContainer summarizedText = {urlOrCopy}/>
-    </div>
-  );
+        <PostArticle body={body} setBody={setBody} summarizePaste={summarizePaste}/>
+        <ArticleContainer summarizedText = {urlOrCopy}/>
+      </div>
+    );
 }
-{/*  */}
 
 export default App;
