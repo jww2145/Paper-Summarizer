@@ -1,9 +1,10 @@
 import React from 'react'
-import Article from './Article'
+import Sentence from './Sentence'
 
 function ArticleContainer({summary}) {
 
-const showSummary = summary.map(article => <Article article={article} />)
+  const showSummary = summary.map(item => <Sentence item={item} />)
+
 
   return (
     <div className='ArticleContainer'>

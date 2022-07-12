@@ -1,7 +1,5 @@
 
-import React, {useState, UseEffect} from 'react'
-
-
+import React, {useState} from 'react'
 
 
 function ArticleSummarizer({postArticle}) {
@@ -25,13 +23,10 @@ const handleUrlChange = (e) => {
 
 
   return (
-    <div>
-        <form onSubmit={handleSubmit} className="link-form">
-            <input onChange={handleUrlChange} value={url} placeholder="Enter Article Link" type="text"/>
-            <input type="submit" valiue="send new article" />
-        </form>
-
-    </div>
+    <form onSubmit={handleSubmit} className="link-form">
+        <input onChange={handleUrlChange} value={url} placeholder="Enter Article Link" type="text"/>
+        <input type="submit" value="send new article" />
+    </form>
   )
 }
 
