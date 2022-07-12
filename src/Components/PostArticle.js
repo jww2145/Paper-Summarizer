@@ -4,7 +4,7 @@ import PasteText from "./PasteText"
 function PostArticle({body, setBody, summarizePaste}){
     return(
         <div>
-            <h1>Summarize Text</h1>
+            <h3>Copy and Paste</h3>
             <PasteText body = {body} setBody = {setBody} summarizePaste = {summarizePaste}/>
         </div>
     )

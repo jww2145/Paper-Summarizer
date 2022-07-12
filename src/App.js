@@ -8,8 +8,8 @@ import Navbar from "./Components/Navbar"
 import ArticleContainer from "./Components/ArticleContainer";
 import PasteText from "./Components/PasteText";
 import PostArticle from "./Components/PostArticle"
-
-
+import {Container} from './styles/Container.styled'
+import "./styles/App.css"
 
 
 function App() {
@@ -44,7 +44,9 @@ function App() {
   const urlOrCopy = urlOrText ? summary : body
 
     return (
-      <div className="originDiv">
+   <div className="originDiv">
+        <h1>Research Helper</h1>
+
         <Routes>
 
         <Route path='/' element={<Home/>} />
@@ -52,12 +54,12 @@ function App() {
         <Route path='*' element={<Fourohfour/>} />
 
         </Routes>
-        <h1>
-          Research Helper
-        </h1>
-        <ArticleSummarizer  postArticle={postArticle}/>
 
-        <PostArticle body={body} setBody={setBody} summarizePaste={summarizePaste}/>
+        <Container>
+          <ArticleSummarizer id = 'articleSummarizer'  postArticle={postArticle}/>
+          <PostArticle id = 'postArticle' body={body} setBody={setBody} summarizePaste={summarizePaste}/>
+        </Container>
+
         <ArticleContainer summarizedText = {urlOrCopy}/>
       </div>
     );

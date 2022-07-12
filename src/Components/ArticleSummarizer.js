@@ -18,10 +18,13 @@ function ArticleSummarizer({postArticle}) {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="link-form">
+    <div>
+      <h3>Drop an URL</h3>
+      <form onSubmit={handleSubmit} className="link-form">
         <input onChange={handleUrlChange} value={url} placeholder="Enter Article Link" type="text"/>
-        <input type="submit" value="send new article" />
-    </form>
+        <input type="submit" value="Submit Url" />
+      </form>
+    </div>
   )
 }
 
