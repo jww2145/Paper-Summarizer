@@ -3,13 +3,10 @@ import Sentence from './Sentence'
 
 
 
-function ArticleContainer({summarizedText}) {
+function ArticleContainer({summarizedText, rank}) {
+  console.log(rank)
 
-  const showSummary = summarizedText.map(item => <Sentence item={item} />)
-
-
-
-
+  const showSummary = summarizedText.map(item => <Sentence key = {item.rank} item={item} />)
 
   return (
     <div className='ArticleContainer'>

@@ -8,6 +8,7 @@ import Navbar from "./Components/Navbar"
 import ArticleContainer from "./Components/ArticleContainer";
 import PasteText from "./Components/PasteText";
 import PostArticle from "./Components/PostArticle"
+import Ner from "./Ner";
 
 
 
@@ -40,18 +41,30 @@ const postArticle = (newArticle) => {
       .then(res => res.json())
       .then(data => {
         if(data.items){
-          console.log(data.items)
           setBody(data.items)
           setUrl(false)
         }
       })
   }
-  
- console.log(body)
+
 
  const [url, setUrl] = useState(true)
 
  const urlOrCopy = url ? summary : body
+
+
+const [namedData, setNamedData] = useState([])
+ 
+const recognizeEntity = (newEntity) => {
+  console.log(newEntity)
+  fetch(`https://api.intellexer.com/recognizeNe?apikey=${process.env.REACT_APP_API_KEY}&loadNamedEntities=true&loadRelationsTree=true&loadSentences=true&url=${newEntity.ner}`)
+  .then(res => res.json())
+  .then(reData => {
+    if(reData.items){
+      setNamedData(reData)
+    }
+  })
+}
 
 
 
@@ -70,6 +83,7 @@ const postArticle = (newArticle) => {
       <ArticleSummarizer  postArticle={postArticle}/>
 
       <PostArticle body={body} setBody={setBody} summarizePaste={summarizePaste}/>
+      <Ner recognizeEntity={recognizeEntity}/>
       <ArticleContainer summarizedText = {urlOrCopy}/>
     </div>
   );
