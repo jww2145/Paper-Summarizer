@@ -11,76 +11,76 @@ import PostArticle from "./Components/PostArticle"
 import Ner from "./Ner";
 
 
+import {Container} from './styles/Container.styled'
+import "./styles/App.css"
 
 
 function App() {
-
-const [summary, setSummary] = useState([])
-
-
-
-const postArticle = (newArticle) => {
-  fetch(`http://api.intellexer.com/summarize?apikey=${process.env.REACT_APP_API_KEY}&conceptsRestrictions=7&summaryRestriction=7&url=${newArticle.url}`)
-    .then(res => res.json())
-    .then(newSummary => {
-      if(newSummary.items){
-        console.log(newSummary.items);
-        setSummary(newSummary.items)
-        setUrl(true)
-      }
-    })
-  }
-
+  const [summary, setSummary] = useState([])
   const [body, setBody] = useState([])
+  const [urlOrText, setUrlOrText] = useState(true)
 
-  const summarizePaste = (body) => {
+  const postArticle = (newArticle) => {
+    fetch(`http://api.intellexer.com/summarize?apikey=${process.env.REACT_APP_API_KEY}&conceptsRestrictions=7&summaryRestriction=7&url=${newArticle.url}`)
+      .then(res => res.json())
+      .then(newSummary => {
+        if(newSummary.items){
+          setSummary(newSummary.items)
+          setUrlOrText(true)
+        }
+      })
+    }
+  const summarizePaste = (article) => {
       fetch(`https://api.intellexer.com/summarizeText?apikey=${process.env.REACT_APP_API_KEY}&conceptsRestriction=7&returnedTopicsCount=2&summaryRestriction=7&textStreamLength=1000`,{
           method: 'POST',
-          body: JSON.stringify(body)
+          body: JSON.stringify(article)
       })
       .then(res => res.json())
       .then(data => {
         if(data.items){
           setBody(data.items)
-          setUrl(false)
+          setUrlOrText(false)
         }
       })
   }
+  const [namedData, setNamedData] = useState([])
+
+  const urlOrCopy = urlOrText ? summary : body
+
+  const recognizeEntity = (newEntity) => {
+    console.log(newEntity)
+    fetch(`https://api.intellexer.com/recognizeNe?apikey=${process.env.REACT_APP_API_KEY}&loadNamedEntities=true&loadRelationsTree=true&loadSentences=true&url=${newEntity.ner}`)
+    .then(res => res.json())
+    .then(reData => {
+      if(reData.items){
+        setNamedData(reData)
+      }
+    })
+  }
+
+    return (
+   <div className="originDiv">
+        <h1>Research Helper</h1>
+
+        <Routes>
 
 
- const [url, setUrl] = useState(true)
-
- const urlOrCopy = url ? summary : body
-
-
-const [namedData, setNamedData] = useState([])
  
-const recognizeEntity = (newEntity) => {
-  console.log(newEntity)
-  fetch(`https://api.intellexer.com/recognizeNe?apikey=${process.env.REACT_APP_API_KEY}&loadNamedEntities=true&loadRelationsTree=true&loadSentences=true&url=${newEntity.ner}`)
-  .then(res => res.json())
-  .then(reData => {
-    if(reData.items){
-      setNamedData(reData)
-    }
-  })
-}
 
 
 
-  return (
-    <div className="originDiv">
-      <Routes>
+        <Route path='/' element={<Home/>} />
+        <Route path='/about' element={<About/>} />
+        <Route path='*' element={<Fourohfour/>} />
 
-      <Route path='/' element={<Home/>} />
-      <Route path='/about' element={<About/>} />
-      <Route path='*' element={<Fourohfour/>} />
+        </Routes>
 
-      </Routes>
-      <h1>
-        Research Helper
-      </h1>
-      <ArticleSummarizer  postArticle={postArticle}/>
+        <Container>
+          <ArticleSummarizer id = 'articleSummarizer'postArticle={postArticle}/>
+          <ArticleContainer summarizedText = {urlOrCopy}/>
+        </Container>
+
+        <PostArticle id = 'postArticle' body={body} setBody={setBody} summarizePaste={summarizePaste}/>
 
       <PostArticle body={body} setBody={setBody} summarizePaste={summarizePaste}/>
       <Ner recognizeEntity={recognizeEntity}/>
@@ -88,6 +88,5 @@ const recognizeEntity = (newEntity) => {
     </div>
   );
 }
-{/*  */}
 
 export default App;

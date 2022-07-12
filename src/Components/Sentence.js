@@ -1,7 +1,6 @@
 import React from 'react'
 
 function Sentence({item}) {
-  console.log(item);
   return (
     <div className='single-article'>
       <h3>{item.title}</h3>

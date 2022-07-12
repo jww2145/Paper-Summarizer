@@ -1,21 +1,21 @@
-import React from "react";
+import React, {useState} from "react";
 
-function PasteText({body, setBody, summarizePaste}){
+function PasteText({summarizePaste}){
+
+    const [article, setArticle] = useState('')
 
     function handleForm(e){
-        setBody(e.target.value)
-        
+        setArticle(e.target.value)
     }
 
     function handleSubmit(e){
         e.preventDefault()
-        console.log(body)
-        summarizePaste(body)
+        summarizePaste(article)
     }
 
     return(
         <form onSubmit = {(e) => handleSubmit(e)}>
-            <input type="text" value = {body} onChange = {(e) => handleForm(e)} />
+            <textarea id = 'largeForm' value = {article} onChange = {(e) => handleForm(e)} />
             <input type="submit" value="Paste Text" />
         </form>
     )
