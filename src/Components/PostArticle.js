@@ -1,8 +1,8 @@
 import React,{ useState, useEffect } from "react";
 import PasteText from "./PasteText"
 
-function PostArticle(){
-
+function PostArticle({body, setBody, summarizePaste}){
+/*
     const [body, setBody] = useState('')
 
     const summarizePaste = (body) => {
@@ -13,7 +13,7 @@ function PostArticle(){
         .then(res => res.json())
         .then(data => console.log(data))
     }
-
+*/
     return(
         <div>
             <h1>Summarize Text</h1>
