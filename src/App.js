@@ -8,7 +8,11 @@ import Navbar from "./Components/Navbar"
 import ArticleContainer from "./Components/ArticleContainer";
 import PasteText from "./Components/PasteText";
 import PostArticle from "./Components/PostArticle"
-import Ner from "./Ner";
+import Ner from "./Components/Ner";
+import PieChart from "./Components/PieChart"
+import { Chart } from "react-google-charts";
+
+
 import {Container} from './styles/Container.styled'
 import "./styles/App.css"
 import TextContainer from "./Components/TextContainer";
@@ -45,20 +49,31 @@ function App() {
         }
       })
   }
-  const [namedData, setNamedData] = useState([])
 
   // const urlOrCopy = urlOrText ? summary : body
 
+  const [namedData, setNamedData] = useState([])
+
   const recognizeEntity = (newEntity) => {
-    console.log(newEntity)
-    fetch(`https://api.intellexer.com/recognizeNe?apikey=${process.env.REACT_APP_API_KEY}&loadNamedEntities=true&loadRelationsTree=true&loadSentences=true&url=${newEntity.ner}`)
+    fetch(`https://api.intellexer.com/recognizeNe?apikey=${process.env.REACT_APP_API_KEY}&loadNamedEntities=true&url=${newEntity.ner}`)
     .then(res => res.json())
     .then(reData => {
-      if(reData.items){
-        setNamedData(reData)
+      if(reData.entities){
+        setNamedData(reData.entities)
       }
     })
   }
+
+  let output = [['Entities', 'Appearances']]
+
+  console.log(namedData)
+  namedData.forEach(entity => {
+    if(entity.type == 1){
+      output.push([`${entity.text}`, entity.sentenceIds.length])
+    }
+  })
+
+  
 
     return (
    <div className="originDiv">
@@ -79,7 +94,8 @@ function App() {
         <TextContainer body={body}/>
 
       <Ner recognizeEntity={recognizeEntity}/>
-      
+          <PieChart data = {output}/>
+     
     </div>
   );
 }
