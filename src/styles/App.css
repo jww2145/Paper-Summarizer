@@ -77,3 +77,13 @@ input{
     width:auto;
 }
 
+#summary-container{
+    width:50%;
+    margin:auto;
+}
+
+#chart-container{
+    width:50%;
+    margin:auto;
+
+}
