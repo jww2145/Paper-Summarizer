@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from "react";
+import React, {useState} from "react";
 import ArticleSummarizer from "./Components/ArticleSummarizer";
 import { Routes, Route } from "react-router-dom";
 import Home from "./Components/Home";
@@ -6,11 +6,8 @@ import About from "./Components/About";
 import Fourohfour from "./Components/Fourohfour";
 import Navbar from "./Components/Navbar"
 import ArticleContainer from "./Components/ArticleContainer";
-import PasteText from "./Components/PasteText";
 import PostArticle from "./Components/PostArticle"
 import Ner from "./Components/Ner";
-import PieChart from "./Components/PieChart"
-import { Chart } from "react-google-charts";
 import {Container} from './styles/Container.styled'
 import "./styles/App.css"
 
@@ -19,19 +16,18 @@ function App() {
   const [summary, setSummary] = useState([])
   const [namedData, setNamedData] = useState([])
   const [body, setBody] = useState([])
-  const [urlActive,setUrlActive] = useState(false)
-  const [copyActive, setCopyActive] = useState(false)
-  const [chartActive, setChartActive] = useState(false)
+  const [displayActive,setDisplayActive] = useState(false)
+  const [whichDisplay, setWhichDisplay] = useState('')
 
   const postArticle = (newArticle) => {
     fetch(`http://api.intellexer.com/summarize?apikey=${process.env.REACT_APP_API_KEY}&conceptsRestrictions=7&summaryRestriction=7&url=${newArticle.url}`)
       .then(res => res.json())
       .then(newSummary => {
         if(newSummary.items){
-          setSummary(newSummary.items)
+           setSummary(newSummary.items)
         }else{
-          setUrlActive(false)
-        }
+           setDisplayActive(false)
+         }
       })
     }
 
@@ -41,24 +37,26 @@ function App() {
           method: 'POST',
           body: JSON.stringify(article)
       })
-      .then(res => res.json())
+      .then(res => {res.json()
+        setDisplayActive(true)})
       .then(data => {
         if(data.items){
           setBody(data.items)
         }else{
-          setCopyActive(false)
+          setDisplayActive(false)
         }
       })
   }
 
   const recognizeEntity = (newEntity) => {
     fetch(`https://api.intellexer.com/recognizeNe?apikey=${process.env.REACT_APP_API_KEY}&loadNamedEntities=true&url=${newEntity.ner}`)
-    .then(res => res.json())
+    .then(res => {res.json()
+      setDisplayActive(true)})
     .then(reData => {
       if(reData.entities){
         setNamedData(reData.entities)
       }else{
-        setChartActive(false)
+        setDisplayActive(false)
       }
     })
   }
@@ -81,17 +79,11 @@ function App() {
         <Route path='*' element={<Fourohfour/>} />
         </Routes>
 
-          {!urlActive && <ArticleSummarizer setUrlActive = {setUrlActive} postArticle={postArticle}/>}
-          {urlActive && <ArticleContainer  summary={summary}/>}
+        {!displayActive && <ArticleSummarizer setWhichDisplay = {setWhichDisplay} setDisplayActive = {setDisplayActive} postArticle={postArticle}/>}
+        {!displayActive && <PostArticle setWhichDisplay = {setWhichDisplay} setDisplayActive = {setDisplayActive} summarizePaste={summarizePaste}/>}
+        {!displayActive && <Ner setWhichDisplay = {setWhichDisplay} setDisplayActive = {setDisplayActive} recognizeEntity={recognizeEntity}/>}
 
-        
-          {!copyActive && <PostArticle setCopyActive = {setCopyActive} summarizePaste={summarizePaste}/>}
-          {copyActive && <ArticleContainer summary={body}/>}
-
-          {!chartActive && <Ner setChartActive = {setChartActive} recognizeEntity={recognizeEntity}/>}
-          {chartActive && <PieChart data = {output}/>}
-
-     
+        {displayActive && <ArticleContainer  summary={summary}/>}
     </div>
   );
 }
