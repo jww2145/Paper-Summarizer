@@ -2,11 +2,13 @@ import {Link} from 'react-router-dom'
 
 function Navbar() {
   return (
-    <div>
-        <Link to="/">Home</Link>
-        <Link to="/about">About</Link>
-        
-    </div>
+    <ul className='navbar'>
+       <li className='navbar-link'><Link to="/">Home</Link></li> 
+      <li className='navbar-link'><Link to="/about">About</Link></li>  
+      <li className='navbar-link'><Link to="/Url">Url</Link></li>  
+      <li className='navbar-link'><Link to="/Copy">Copy</Link></li>  
+      <li className='navbar-link'><Link to="/Named">Named</Link></li>  
+    </ul>
   )
 }
 
