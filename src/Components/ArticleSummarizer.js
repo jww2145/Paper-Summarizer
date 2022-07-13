@@ -11,6 +11,7 @@ function ArticleSummarizer({postArticle, setDisplayActive, setWhichDisplay}) {
       const newArticle = {url: url}
       postArticle(newArticle)
       setDisplayActive(true)
+      setWhichDisplay('url')
   }
 
   const handleUrlChange = (e) => {

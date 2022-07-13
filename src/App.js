@@ -37,8 +37,7 @@ function App() {
           method: 'POST',
           body: JSON.stringify(article)
       })
-      .then(res => {res.json()
-        setDisplayActive(true)})
+      .then(res => res.json())
       .then(data => {
         if(data.items){
           setBody(data.items)
@@ -50,8 +49,7 @@ function App() {
 
   const recognizeEntity = (newEntity) => {
     fetch(`https://api.intellexer.com/recognizeNe?apikey=${process.env.REACT_APP_API_KEY}&loadNamedEntities=true&url=${newEntity.ner}`)
-    .then(res => {res.json()
-      setDisplayActive(true)})
+    .then(res => res.json())
     .then(reData => {
       if(reData.entities){
         setNamedData(reData.entities)
@@ -68,6 +66,8 @@ function App() {
       output.push([`${entity.text}`, entity.sentenceIds.length])
     }
   })
+
+  let subject = whichDisplay === 'url' ? summary : (whichDisplay === 'copy' ? body : namedData)
   
     return (
    <div className="originDiv">
@@ -83,7 +83,7 @@ function App() {
         {!displayActive && <PostArticle setWhichDisplay = {setWhichDisplay} setDisplayActive = {setDisplayActive} summarizePaste={summarizePaste}/>}
         {!displayActive && <Ner setWhichDisplay = {setWhichDisplay} setDisplayActive = {setDisplayActive} recognizeEntity={recognizeEntity}/>}
 
-        {displayActive && <ArticleContainer  summary={summary}/>}
+        {displayActive && <ArticleContainer  data = {output} summary={subject} whichDisplay = {whichDisplay}/>}
     </div>
   );
 }

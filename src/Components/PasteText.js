@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 
-function PasteText({summarizePaste, setDisplayActive}){
+function PasteText({summarizePaste, setDisplayActive, setWhichDisplay}){
 
     const [article, setArticle] = useState('')
 
@@ -11,6 +11,7 @@ function PasteText({summarizePaste, setDisplayActive}){
     function handleSubmit(e){
         e.preventDefault()
         setDisplayActive(true)
+        setWhichDisplay('copy')
         summarizePaste(article)
     }
 
