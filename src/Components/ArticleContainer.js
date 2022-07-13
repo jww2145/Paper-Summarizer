@@ -40,8 +40,6 @@ function ArticleContainer({summary, whichDisplay, data}) {
   }
 
   const options = {
-    'width': 770,
-    'height': 400,
     chartArea:{
       width: '100%',
       height: '80%',
