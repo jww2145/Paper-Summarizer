@@ -1,12 +1,12 @@
 import React, {useState} from 'react'
 
-function NER({recognizeEntity}) {
+function Ner({recognizeEntity, setChartActive}) {
 
     const [ner, setNer] = useState('')
 
     function handleSubmit(e){
         e.preventDefault()
-
+        setChartActive(true)
         const newEntity = {ner: ner}
         recognizeEntity(newEntity)
     }
@@ -16,14 +16,14 @@ const handleUrlChange = (e) => {
 }
 
   return (
-    <div>
+    <div className='child-component-2'>
         <h3>Named Entity Recognizer</h3>
         <form onSubmit={handleSubmit} className='ner-form'>
-            <input value={ner} onChange={handleUrlChange} />
+            <input value={ner} onChange={handleUrlChange} required />
             <input type="submit" value="Recognize" />
         </form>
     </div>
   )
 }
 
-export default NER
+export default Ner

@@ -3,12 +3,15 @@
     src: url(https://dl.dropboxusercontent.com/s/pwiw07kkb6na4ce/kavo-serif.regular.otf?dl=0);
 }
 
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display&family=Raleway:wght@100;200&display=swap');
+
 
 body {
     background-color: #EAE6DF;
     color: #2d2d2b;
     text-align: center;
     width:100%;
+    font-family: 'Raleway', sans-serif;
 }
 
 h1{
@@ -17,32 +20,47 @@ h1{
     color:#B8926A;
     -webkit-text-stroke: rgba(45, 45, 43, .35) 1px;
 }
-.container-child-1{
-    width:30%;
-}
-.container-child-2{
-    width: 60%;
-    padding:2%;
-    font-size:12pt;
-}
-
-.container-child-3{
-    width: 60%;
-    padding:2%;
-    font-size:12pt;
-}
 
 input[type = submit]{
     display:block;
+    position:relative;
     margin:auto;
-    margin-top: 5%;
+    margin-top: 0.5%;;
+    
 }
 
 #largeForm{
-    width:50%;
+    width:30%;
     height:300px;
     background-color: #d4c8be;
     color:#2d2d2b;
+}
+
+#largeForm::-webkit-scrollbar {
+    width: 1em;
+  }
+   
+#largeForm::-webkit-scrollbar-track {
+    box-shadow: none;
+  }
+   
+#largeForm::-webkit-scrollbar-thumb {
+    background-color: #d4c8be;
+    outline: 1px solid #b0b0b0;
+  }
+
+#largeForm::-webkit-scrollbar-track-piece{
+    background-color: #EAE6DF;
+}
+
+#largeForm::-webkit-resizer{
+    background-color: #B8926A;
+    color:#2d2d2b;
+}
+
+input{
+    background-color:#d4c8be;
+    border: 1px solid #b0b0b0;
 }
 
 

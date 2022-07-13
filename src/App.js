@@ -11,17 +11,17 @@ import PostArticle from "./Components/PostArticle"
 import Ner from "./Components/Ner";
 import PieChart from "./Components/PieChart"
 import { Chart } from "react-google-charts";
-
-
 import {Container} from './styles/Container.styled'
 import "./styles/App.css"
-import TextContainer from "./Components/TextContainer";
 
 
 function App() {
   const [summary, setSummary] = useState([])
-  
- // const [urlOrText, setUrlOrText] = useState(true)
+  const [namedData, setNamedData] = useState([])
+  const [body, setBody] = useState([])
+  const [urlActive,setUrlActive] = useState(false)
+  const [copyActive, setCopyActive] = useState(false)
+  const [chartActive, setChartActive] = useState(false)
 
   const postArticle = (newArticle) => {
     fetch(`http://api.intellexer.com/summarize?apikey=${process.env.REACT_APP_API_KEY}&conceptsRestrictions=7&summaryRestriction=7&url=${newArticle.url}`)
@@ -29,12 +29,12 @@ function App() {
       .then(newSummary => {
         if(newSummary.items){
           setSummary(newSummary.items)
-          //setUrlOrText(true)
+        }else{
+          setUrlActive(false)
         }
       })
     }
 
-    const [body, setBody] = useState([])
 
   const summarizePaste = (article) => {
       fetch(`https://api.intellexer.com/summarizeText?apikey=${process.env.REACT_APP_API_KEY}&conceptsRestriction=7&returnedTopicsCount=2&summaryRestriction=7&textStreamLength=1000`,{
@@ -45,14 +45,11 @@ function App() {
       .then(data => {
         if(data.items){
           setBody(data.items)
-          //setUrlOrText(false)
+        }else{
+          setCopyActive(false)
         }
       })
   }
-
-  // const urlOrCopy = urlOrText ? summary : body
-
-  const [namedData, setNamedData] = useState([])
 
   const recognizeEntity = (newEntity) => {
     fetch(`https://api.intellexer.com/recognizeNe?apikey=${process.env.REACT_APP_API_KEY}&loadNamedEntities=true&url=${newEntity.ner}`)
@@ -60,21 +57,20 @@ function App() {
     .then(reData => {
       if(reData.entities){
         setNamedData(reData.entities)
+      }else{
+        setChartActive(false)
       }
     })
   }
 
   let output = [['Entities', 'Appearances']]
 
-  console.log(namedData)
   namedData.forEach(entity => {
     if(entity.type == 1){
       output.push([`${entity.text}`, entity.sentenceIds.length])
     }
   })
-
   
-
     return (
    <div className="originDiv">
         <h1>Research Helper</h1>
@@ -85,16 +81,16 @@ function App() {
         <Route path='*' element={<Fourohfour/>} />
         </Routes>
 
-        <Container>
-          <ArticleSummarizer id = 'articleSummarizer'postArticle={postArticle}/>
-          <ArticleContainer  /*summarizedText = {urlOrCopy}*/ summary={summary}/>
-        </Container>
+          {!urlActive && <ArticleSummarizer setUrlActive = {setUrlActive} postArticle={postArticle}/>}
+          {urlActive && <ArticleContainer  summary={summary}/>}
 
-        <PostArticle id = 'postArticle' body={body} setBody={setBody} summarizePaste={summarizePaste}/>
-        <TextContainer body={body}/>
+        
+          {!copyActive && <PostArticle setCopyActive = {setCopyActive} summarizePaste={summarizePaste}/>}
+          {copyActive && <ArticleContainer summary={body}/>}
 
-      <Ner recognizeEntity={recognizeEntity}/>
-          <PieChart data = {output}/>
+          {!chartActive && <Ner setChartActive = {setChartActive} recognizeEntity={recognizeEntity}/>}
+          {chartActive && <PieChart data = {output}/>}
+
      
     </div>
   );

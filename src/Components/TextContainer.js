@@ -6,7 +6,7 @@ function TextContainer({body}) {
     const showText = body.map(bodyItem => <Text bodyItem={bodyItem} />) 
 
   return (
-    <div>
+    <div className='child-container-1'>
         {showText}
     </div>
   )

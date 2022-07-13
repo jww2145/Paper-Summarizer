@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 
-function PasteText({summarizePaste}){
+function PasteText({summarizePaste, setCopyActive}){
 
     const [article, setArticle] = useState('')
 
@@ -10,12 +10,13 @@ function PasteText({summarizePaste}){
 
     function handleSubmit(e){
         e.preventDefault()
+        setCopyActive(true)
         summarizePaste(article)
     }
 
     return(
         <form onSubmit = {(e) => handleSubmit(e)}>
-            <textarea id = 'largeForm' value = {article} onChange = {(e) => handleForm(e)} />
+            <textarea id = 'largeForm' value = {article} onChange = {(e) => handleForm(e)} required/>
             <input type="submit" value="Get Text Summary" />
         </form>
     )

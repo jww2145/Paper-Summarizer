@@ -3,12 +3,12 @@ import Sentence from './Sentence'
 
 
 
-function ArticleContainer({summarizedText, summary}) {
+function ArticleContainer({summary}) {
 
   const showSummary = summary.map(item => <Sentence key = {item.rank} item={item} />)
 
   return (
-    <div className='container-child-2'>
+    <div>
         {showSummary}
     </div>
   )
