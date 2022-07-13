@@ -62,6 +62,7 @@ function Home() {
   })
 
   let subject = whichDisplay === 'url' ? summary : (whichDisplay === 'copy' ? body : namedData)
+  
   return (
 
     <div className='test'>
