@@ -10,8 +10,12 @@ body {
     background-color: #EAE6DF;
     color: #2d2d2b;
     text-align: center;
-    width:100%;
+    width:auto;
     font-family: 'Raleway', sans-serif;
+}
+
+body::-webkit-scrollbar {
+    display: none;
 }
 
 h1{
@@ -61,6 +65,16 @@ input[type = submit]{
 input{
     background-color:#d4c8be;
     border: 1px solid #b0b0b0;
+}
+
+::selection{
+    background: #b0b0b0;
+    color: #2d2d2b;
+}
+
+#urlForm, #textForm, #chartForm{
+    padding: 5%;
+    width:auto;
 }
 
 

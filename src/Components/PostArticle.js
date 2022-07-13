@@ -1,11 +1,11 @@
-import React,{ useState, useEffect } from "react";
+import React from "react";
 import PasteText from "./PasteText"
 
-function PostArticle({summarizePaste, setCopyActive}){
+function PostArticle({summarizePaste, setDisplayActive, setWhichDisplay}){
     return(
-        <div className="child-component-2">
+        <div id = "textForm">
             <h3>Copy and Paste</h3>
-            <PasteText setCopyActive = {setCopyActive} summarizePaste = {summarizePaste}/>
+            <PasteText setDisplayActive={setDisplayActive} setWhichDisplay = {setWhichDisplay} summarizePaste = {summarizePaste}/>
         </div>
     )
 }

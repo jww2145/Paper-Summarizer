@@ -1,15 +1,22 @@
 import React from 'react'
 import Sentence from './Sentence'
+import PieChart from "./PieChart"
+import { Chart } from "react-google-charts";
 
 
+function ArticleContainer({summary, whichDisplay, data}) {
 
-function ArticleContainer({summarizedText}) {
+  const showSummary = summary.map(item => <Sentence key = {item.rank} item={item} />)
 
-  const showSummary = summarizedText.map(item => <Sentence key = {item.rank} item={item} />)
+  const displayChart = whichDisplay === 'ner'
 
   return (
-    <div className='container-child-2'>
-        {showSummary}
+    <div>
+        {!displayChart && showSummary}
+        {displayChart && <Chart 
+          chartType = "PieChart"
+          data = {data}
+        />}
     </div>
   )
 }

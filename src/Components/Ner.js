@@ -1,14 +1,15 @@
 import React, {useState} from 'react'
 
-function Ner({recognizeEntity, setChartActive}) {
+function Ner({recognizeEntity, setDisplayActive, setWhichDisplay}) {
 
     const [ner, setNer] = useState('')
 
     function handleSubmit(e){
         e.preventDefault()
-        setChartActive(true)
         const newEntity = {ner: ner}
         recognizeEntity(newEntity)
+        setDisplayActive(true)
+        setWhichDisplay('ner')
     }
 
 const handleUrlChange = (e) => {
@@ -16,7 +17,7 @@ const handleUrlChange = (e) => {
 }
 
   return (
-    <div className='child-component-2'>
+    <div id = "chartForm">
         <h3>Named Entity Recognizer</h3>
         <form onSubmit={handleSubmit} className='ner-form'>
             <input value={ner} onChange={handleUrlChange} required />
