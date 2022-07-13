@@ -12,7 +12,7 @@ function Fourohfour() {
         4000)
     },[])
   return (
-    <div>404</div>
+    null
   )
 }
 

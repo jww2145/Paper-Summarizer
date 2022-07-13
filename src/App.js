@@ -74,10 +74,10 @@ function App() {
     return (
    <div className="originDiv">
         <h1>Research Helper</h1>
-        
+        <Navbar />
         <Routes>
         <Route path='/' element={<Home/>} />
-        <Route path='/about' element={<About/>} />
+        <Route path='/name-entitty-recognizer' element={<About/>} />
         <Route path='*' element={<Fourohfour/>} />
         </Routes>
 
