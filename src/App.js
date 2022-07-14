@@ -12,7 +12,6 @@ import Url from "./Components/Url";
 function App() {
     return (
    <div className="originDiv">
-      <Navbar />
         <h1>Research Helper</h1>
         <Navbar />
         <Routes>
