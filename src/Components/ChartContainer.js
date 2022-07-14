@@ -54,6 +54,8 @@ function ChartContainer({data}) {
             data = {top}
             options = {options}
           />
+        <div id = 'button-bar'>
+        </div>
       </div>
   )
 }

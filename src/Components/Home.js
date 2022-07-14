@@ -3,7 +3,7 @@ import React from "react"
 
 function Home() {
   return (
-    <div>
+    <div id = "home-div">
       <h2>✍️ Welcome to Research Helper!</h2>
     
       <p>Need to quickly read a Wikipedia page? Drop the link! 

@@ -4,7 +4,6 @@ import Ner from './Ner'
 
 function Named() {
     const [namedData, setNamedData] = useState([])
-
     const [displayActive,setDisplayActive] = useState(false)
 
     const recognizeEntity = (newEntity) => {
@@ -28,14 +27,15 @@ function Named() {
       })
 
       function handleClick(){
-        setDisplayActive(false)
+          setDisplayActive(false)
       }
+
 
   return (
     <div>
         {!displayActive && <Ner  setDisplayActive = {setDisplayActive} recognizeEntity={recognizeEntity}/>}
         {displayActive && <ChartContainer  data={output}/>}
-        {displayActive && <button type='button' onClick = {handleClick}>Go Back</button>}
+        {displayActive && <button type='button' id='back' onClick = {(e) => handleClick(e)}>Go Back</button>}
     </div>
   )
 }

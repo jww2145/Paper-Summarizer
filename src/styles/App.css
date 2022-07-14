@@ -83,6 +83,19 @@ input{
 #urlForm, #textForm, #chartForm{
     padding: 5%;
     width:auto;
+    margin:auto;
+}
+
+#urlForm{
+    transform: translate(0,55%);
+}
+
+#textForm{
+    transform: translate(0,7%);
+}
+
+#chartForm{
+    transform: translate(0,55%);
 }
 
 
@@ -148,4 +161,10 @@ li a {
 
 li a:hover {
 background-color: #2d2d2b;
+}
+
+#home-div{
+    margin: auto;
+    width: auto;
+    transform: translate(0,135%);
 }
