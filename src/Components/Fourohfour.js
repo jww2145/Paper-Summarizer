@@ -12,7 +12,10 @@ function Fourohfour() {
         4000)
     },[])
   return (
-    null
+    <div>
+   <h1>404</h1>
+   <h2>Page not found. Redirecting back to Home.</h2>
+   </div>
   )
 }
 

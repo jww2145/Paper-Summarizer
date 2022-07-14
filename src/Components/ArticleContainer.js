@@ -13,6 +13,7 @@ function ArticleContainer({summary}) {
     <div id='summary-container'>
         <h2>Summary</h2>
           {showSummary}
+          {showSummary? null : 'Loading...'}
     </div>
   )
 }

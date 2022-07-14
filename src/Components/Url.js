@@ -3,10 +3,12 @@ import ArticleContainer from './ArticleContainer'
 import ArticleSummarizer from './ArticleSummarizer'
 
 
+
 function Url() {
 
     const [summary, setSummary] = useState([])
     const [displayActive,setDisplayActive] = useState(false)
+   
 
 
     const postArticle = (newArticle,selection) => {
@@ -30,6 +32,7 @@ function Url() {
         {!displayActive && <ArticleSummarizer setDisplayActive = {setDisplayActive} postArticle={postArticle}/>}
         {displayActive && <ArticleContainer   summary={summary} />}
         {displayActive && <button type='button' onClick = {handleClick}>Go Back</button>}
+        
     </div>
   )
 }
