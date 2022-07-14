@@ -30,6 +30,7 @@ h1{
     font-size: 52px;
     color:#B8926A;
     -webkit-text-stroke: rgba(45, 45, 43, .35) 1px;
+    padding: 2%;
 }
 
 input[type = submit]{

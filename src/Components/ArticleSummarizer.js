@@ -2,7 +2,7 @@
 import React, {useState} from 'react'
 
 
-function ArticleSummarizer({postArticle, setDisplayActive}) {
+function ArticleSummarizer({postArticle, setDisplayActive, setSpinner}) {
 
   const [url, setUrl] = useState('')
   const [selection, setSelection] = useState(7)
@@ -12,6 +12,7 @@ function ArticleSummarizer({postArticle, setDisplayActive}) {
       const newArticle = {url: url}
       postArticle(newArticle, selection)
       setDisplayActive(true)
+      setSpinner(true)
   }
 
   const handleUrlChange = (e) => {
@@ -39,6 +40,7 @@ function ArticleSummarizer({postArticle, setDisplayActive}) {
             <option>12</option>
             <option>13</option>
         </select>
+      
         <input type="submit" value="Submit Url" />
       </form>
     </div>

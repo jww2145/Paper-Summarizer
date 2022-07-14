@@ -1,8 +1,9 @@
 import React, {useState} from "react";
 
-function PasteText({summarizePaste, setDisplayActive}){
+function PasteText({summarizePaste, setDisplayActive, setSpinner}){
 
     const [article, setArticle] = useState('')
+    
 
     function handleForm(e){
         setArticle(e.target.value)
@@ -12,6 +13,7 @@ function PasteText({summarizePaste, setDisplayActive}){
         e.preventDefault()
         setDisplayActive(true)
         summarizePaste(article)
+        
     }
 
     return(

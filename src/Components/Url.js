@@ -1,6 +1,7 @@
 import React, {useState} from 'react'
 import ArticleContainer from './ArticleContainer'
 import ArticleSummarizer from './ArticleSummarizer'
+import Spinner from 'react-bootstrap/Spinner'
 
 
 
@@ -9,6 +10,7 @@ function Url() {
 
     const [summary, setSummary] = useState([])
     const [displayActive,setDisplayActive] = useState(false)
+    const [spinner, setSpinner] = useState(false)
    
 
 
@@ -18,22 +20,30 @@ function Url() {
           .then(newSummary => {
             if(newSummary.items){
                setSummary(newSummary.items)
+               setSpinner(false)
             }else{
                setDisplayActive(false)
+               setSpinner(false)
              }
           })
         }
-        function handleClick(){
-          setDisplayActive(false)
-        }
+    
+    function handleClick(){
+        setDisplayActive(false)
+    }
 
+ 
   return (
     <div>
-        
-        {!displayActive && <ArticleSummarizer setDisplayActive = {setDisplayActive} postArticle={postArticle}/>}
+         {spinner && <Spinner animation="border" role="status">
+      <span className="visually-hidden">Loading...</span>
+    </Spinner>}
+        {!displayActive && <ArticleSummarizer setSpinner = {setSpinner} setDisplayActive = {setDisplayActive} postArticle={postArticle}/>}
         {displayActive && <ArticleContainer   summary={summary} />}
         {displayActive && <button type='button' onClick = {handleClick}>Go Back</button>}
+        
     </div>
+    
   )
 }
 
