@@ -12,18 +12,12 @@ import Url from "./Components/Url";
 
 
 function App() {
-  const [summary, setSummary] = useState([])
-  const [namedData, setNamedData] = useState([])
-  const [body, setBody] = useState([])
-  const [displayActive,setDisplayActive] = useState(false)
-  const [whichDisplay, setWhichDisplay] = useState('')
-
- 
+  
     return (
    <div className="originDiv">
+      <Navbar />
         <h1>Research Helper</h1>
         <h2>Welcome to Research Helper! The best place to summarize articles and links!</h2>
-        <Navbar />
         <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/about' element={<About/>} />

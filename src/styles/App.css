@@ -89,16 +89,30 @@ input{
 
 }
 
+
+
 ul{
     list-style-type: none;
   margin: 0;
   padding: 0;
+  overflow: hidden;
+  border: #B8926A
+  ;
 }
 
 li{
+    float: left;
+}
+
+li a {
     display: block;
-    color: white;
+    color:#B8926A;
     text-align: center;
-    padding: 14px 16px;
+    padding: 16px;
     text-decoration: none;
+    font-size: larger;
+}
+
+li a:hover {
+background-color: #2d2d2b;
 }
