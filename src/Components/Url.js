@@ -1,6 +1,7 @@
 import React, {useState} from 'react'
 import ArticleContainer from './ArticleContainer'
 import ArticleSummarizer from './ArticleSummarizer'
+import Spinner from 'react-bootstrap/Spinner'
 
 
 
@@ -32,6 +33,10 @@ function Url() {
         {!displayActive && <ArticleSummarizer setDisplayActive = {setDisplayActive} postArticle={postArticle}/>}
         {displayActive && <ArticleContainer   summary={summary} />}
         {displayActive && <button type='button' onClick = {handleClick}>Go Back</button>}
+
+        <Spinner animation="border" role="status">
+      <span className="visually-hidden">Loading...</span>
+    </Spinner>
         
     </div>
   )
