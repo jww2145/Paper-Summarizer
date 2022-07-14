@@ -22,10 +22,15 @@ function Copy() {
         })
     }
 
+    function handleClick(){
+      setDisplayActive(false)
+    }
+
   return (
     <div>
          {!displayActive && <PostArticle  setDisplayActive = {setDisplayActive} summarizePaste={summarizePaste}/>}
-         <ArticleContainer summary={body}/>
+         {displayActive && <ArticleContainer summary={body}/>}
+         {displayActive && <button type='button' onClick = {handleClick}>Go Back</button>}
     </div>
   )
 }

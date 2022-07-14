@@ -20,15 +20,27 @@ function Url() {
           })
         }
 
+<<<<<<< HEAD
 
        
+=======
+        function handleClick(){
+          setDisplayActive(false)
+        }
+
+>>>>>>> 1827e8e (Wrapping up CSS)
   return (
     <div>
         
         {!displayActive && <ArticleSummarizer  setDisplayActive = {setDisplayActive} postArticle={postArticle}/>}
+<<<<<<< HEAD
         <ArticleContainer   summary={summary} />
 
         
+=======
+        {displayActive && <ArticleContainer   summary={summary} />}
+        {displayActive && <button type='button' onClick = {handleClick}>Go Back</button>}
+>>>>>>> 1827e8e (Wrapping up CSS)
     </div>
   )
 }

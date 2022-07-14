@@ -1,5 +1,4 @@
-import React, {useState} from "react";
-
+import React from "react";
 import { Routes, Route } from "react-router-dom";
 import Home from "./Components/Home";
 import About from "./Components/About";
@@ -12,21 +11,18 @@ import Url from "./Components/Url";
 
 
 function App() {
-  
     return (
    <div className="originDiv">
       <Navbar />
         <h1>Research Helper</h1>
-        <h2>Welcome to Research Helper! The best place to summarize articles and links!</h2>
+        <Navbar />
         <Routes>
         <Route path='/' element={<Home />} />
-        <Route path='/about' element={<About/>} />
         <Route path='*' element={<Fourohfour/>} />
         <Route path='/Url' element={<Url/>} />
         <Route path='/Copy' element={<Copy/>} />
         <Route path='/Named' element={<Named/>} />
         </Routes>
-
     </div>
   );
 }

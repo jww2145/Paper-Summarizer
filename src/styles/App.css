@@ -5,6 +5,13 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display&family=Raleway:wght@100;200&display=swap');
 
+.originDiv{
+    width: auto;
+}
+
+#root{
+    width: auto;
+}
 
 body {
     background-color: #EAE6DF;
@@ -89,19 +96,44 @@ input{
 
 }
 
+/*CSS for Navbar*/
 
-
-ul{
-    list-style-type: none;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-  border: #B8926A
-  ;
+ul.navbar {
+    border: none;
+    width:auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    padding: 0px;
+    margin: 0px;
 }
 
-li{
-    float: left;
+ul.navbar li {
+    display:inline-block;
+    list-style-type:none;
+    width: calc(100%/4);
+    background: #af9f8c;
+    text-align: center;
+}
+
+ul.navbar li:hover{
+    background-color: #c3b099;
+}
+
+ul.navbar li a {
+    display: block;
+    padding: 5%;
+    text-align:center;
+    text-decoration: none;
+    color: #e3e4e0;
+}
+
+
+ul.navbar li ul {
+    display:none;
+}
+ul.navbar li:hover > ul {
+    display:inline;
 }
 
 li a {

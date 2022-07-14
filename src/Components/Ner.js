@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 
-function Ner({recognizeEntity, setDisplayActive, setWhichDisplay}) {
+function Ner({recognizeEntity, setDisplayActive}) {
 
     const [ner, setNer] = useState('')
 
@@ -9,7 +9,6 @@ function Ner({recognizeEntity, setDisplayActive, setWhichDisplay}) {
         const newEntity = {ner: ner}
         recognizeEntity(newEntity)
         setDisplayActive(true)
-        setWhichDisplay('ner')
     }
 
 const handleUrlChange = (e) => {
