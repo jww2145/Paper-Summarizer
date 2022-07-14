@@ -5,6 +5,7 @@ import Spinner from 'react-bootstrap/Spinner'
 
 
 
+
 function Url() {
 
     const [summary, setSummary] = useState([])
@@ -13,8 +14,8 @@ function Url() {
    
 
 
-    const postArticle = (newArticle,selection) => {
-        fetch(`http://api.intellexer.com/summarize?apikey=${process.env.REACT_APP_API_KEY}&conceptsRestrictions=${selection}&summaryRestriction=${selection}&url=${newArticle.url}`)
+    const postArticle = (newArticle,selection, characters) => {
+        fetch(`http://api.intellexer.com/summarize?apikey=${process.env.REACT_APP_API_KEY}&conceptsRestrictions=${selection}&summaryRestriction=${selection}&textStreamLength=${characters}&url=${newArticle.url}`)
           .then(res => res.json())
           .then(newSummary => {
             if(newSummary.items){
@@ -29,6 +30,7 @@ function Url() {
     
     function handleClick(){
         setDisplayActive(false)
+        setSummary([])
     }
 
  
@@ -40,6 +42,8 @@ function Url() {
         <span className="visually-hidden">Loading...</span>
         </Spinner>}
         {displayActive && <button type='button' onClick = {handleClick}>{spinner ? 'Abort' : 'Go Back'}</button>}
+
+
         
     </div>
     
