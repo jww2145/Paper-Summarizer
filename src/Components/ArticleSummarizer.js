@@ -40,7 +40,6 @@ function ArticleSummarizer({postArticle, setDisplayActive, setSpinner}) {
             <option>12</option>
             <option>13</option>
         </select>
-      
         <input type="submit" value="Submit Url" />
       </form>
     </div>
