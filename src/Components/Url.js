@@ -19,12 +19,15 @@ function Url() {
           })
         }
 
-
+        function handleClick(){
+          setDisplayActive(false)
+        }
 
   return (
     <div>
         {!displayActive && <ArticleSummarizer  setDisplayActive = {setDisplayActive} postArticle={postArticle}/>}
-        <ArticleContainer   summary={summary} />
+        {displayActive && <ArticleContainer   summary={summary} />}
+        {displayActive && <button type='button' onClick = {handleClick}>Go Back</button>}
     </div>
   )
 }

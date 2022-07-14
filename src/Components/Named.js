@@ -22,15 +22,20 @@ function Named() {
       let output = [['Entities', 'Appearances']]
 
       namedData.forEach(entity => {
-        if(entity.type == 1){
+        if(entity.type === 1){
           output.push([`${entity.text}`, entity.sentenceIds.length])
         }
       })
 
+      function handleClick(){
+        setDisplayActive(false)
+      }
+
   return (
     <div>
         {!displayActive && <Ner  setDisplayActive = {setDisplayActive} recognizeEntity={recognizeEntity}/>}
-        <ChartContainer  data={output}/>
+        {displayActive && <ChartContainer  data={output}/>}
+        {displayActive && <button type='button' onClick = {handleClick}>Go Back</button>}
     </div>
   )
 }

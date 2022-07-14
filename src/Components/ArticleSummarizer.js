@@ -2,7 +2,7 @@
 import React, {useState} from 'react'
 
 
-function ArticleSummarizer({postArticle, setDisplayActive, setWhichDisplay}) {
+function ArticleSummarizer({postArticle, setDisplayActive}) {
 
   const [url, setUrl] = useState('')
 
@@ -11,7 +11,6 @@ function ArticleSummarizer({postArticle, setDisplayActive, setWhichDisplay}) {
       const newArticle = {url: url}
       postArticle(newArticle)
       setDisplayActive(true)
-      setWhichDisplay('url')
   }
 
   const handleUrlChange = (e) => {

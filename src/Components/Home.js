@@ -1,16 +1,19 @@
-import {useState} from 'react'
-import ArticleSummarizer from './ArticleSummarizer'
-import ArticleContainer from "./ArticleContainer";
-import PostArticle from "./PostArticle"
-import Ner from "./Ner";
+import React from "react"
 
 
 function Home() {
   return (
+    <div>
+      <h2>✍️ Welcome to Research Helper!</h2>
 
-    <div className='test'>
-      
-
+      <p>Need to quickly read a Wikipedia page? Drop the link! 
+        <br></br>
+        <br></br>
+        Want a targetted summary? Copy and paste! 
+        <br></br>
+        <br></br>
+        Searching for the usual suspects? Name Finder! 
+      </p>
     </div>
   )
 }

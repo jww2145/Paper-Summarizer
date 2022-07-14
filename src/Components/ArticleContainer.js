@@ -1,7 +1,5 @@
 import React from 'react'
 import Sentence from './Sentence'
-import PieChart from "./PieChart"
-import { Chart } from "react-google-charts";
 
 
 function ArticleContainer({summary}) {

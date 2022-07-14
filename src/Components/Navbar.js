@@ -2,13 +2,14 @@ import {Link} from 'react-router-dom'
 
 function Navbar() {
   return (
-    <ul className='navbar'>
-       <li className='navbar-link'><Link to="/">Home</Link></li> 
-      <li className='navbar-link'><Link to="/about">About</Link></li>  
-      <li className='navbar-link'><Link to="/Url">Url</Link></li>  
-      <li className='navbar-link'><Link to="/Copy">Copy</Link></li>  
-      <li className='navbar-link'><Link to="/Named">Named</Link></li>  
-    </ul>
+    <div id = "navbar">
+      <ul className='navbar'>
+        <li className='navbar-link'><Link to="/">Home</Link></li> 
+        <li className='navbar-link'><Link to="/Url">Drop a Link</Link></li>  
+        <li className='navbar-link'><Link to="/Copy">Copy and Paste</Link></li>  
+        <li className='navbar-link'><Link to="/Named">Name Finder</Link></li>  
+      </ul>
+    </div>
   )
 }
 
