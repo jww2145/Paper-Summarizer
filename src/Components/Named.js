@@ -5,7 +5,6 @@ import Spinner from 'react-bootstrap/esm/Spinner'
 
 function Named() {
     const [namedData, setNamedData] = useState([])
-
     const [displayActive,setDisplayActive] = useState(false)
     const [spinner, setSpinner] = useState(false)
 
@@ -32,8 +31,9 @@ function Named() {
       })
 
       function handleClick(){
-        setDisplayActive(false)
+          setDisplayActive(false)
       }
+
 
   return (
     <div>
@@ -43,7 +43,7 @@ function Named() {
         {!displayActive && <Ner  setDisplayActive = {setDisplayActive} recognizeEntity={recognizeEntity} setSpinner={setSpinner}/>}
         {displayActive && <ChartContainer  data={output}/>}
         {displayActive && <button type='button' onClick = {handleClick}>Go Back</button>}
-        
+
     </div>
   )
 }

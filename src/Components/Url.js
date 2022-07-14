@@ -34,16 +34,12 @@ function Url() {
  
   return (
     <div>
-         {spinner && <Spinner animation="border" role="status">
-      <span className="visually-hidden">Loading...</span>
-    </Spinner>}
         {!displayActive && <ArticleSummarizer setSpinner = {setSpinner} setDisplayActive = {setDisplayActive} postArticle={postArticle}/>}
         {displayActive && <ArticleContainer   summary={summary} />}
-        {displayActive && <button type='button' onClick = {handleClick}>Go Back</button>}
-
-        <Spinner animation="border" role="status">
-      <span className="visually-hidden">Loading...</span>
-    </Spinner>
+        {spinner && <Spinner animation="border" role="status">
+        <span className="visually-hidden">Loading...</span>
+        </Spinner>}
+        {displayActive && <button type='button' onClick = {handleClick}>{spinner ? 'Abort' : 'Go Back'}</button>}
         
     </div>
     
