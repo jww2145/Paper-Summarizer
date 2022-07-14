@@ -13,6 +13,7 @@ function PasteText({summarizePaste, setDisplayActive, setSpinner}){
         e.preventDefault()
         setDisplayActive(true)
         summarizePaste(article)
+        setSpinner(true)
         
     }
 

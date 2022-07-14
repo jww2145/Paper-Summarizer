@@ -32,12 +32,13 @@ function Copy() {
 
   return (
     <div>
-         {!displayActive && <PostArticle  setDisplayActive = {setDisplayActive} summarizePaste={summarizePaste}/>}
-         {displayActive && <ArticleContainer summary={body}/>}
-         {displayActive && <button type='button' onClick = {handleClick}>Go Back</button>}
-         {spinner && <Spinner animation="border" role="status">
+      {spinner && <Spinner animation="border" role="status">
       <span className="visually-hidden">Loading...</span>
     </Spinner>}
+         {!displayActive && <PostArticle setSpinner={setSpinner} setDisplayActive = {setDisplayActive} summarizePaste={summarizePaste}/>}
+         {displayActive && <ArticleContainer summary={body}/>}
+         {displayActive && <button type='button' onClick = {handleClick}>Go Back</button>}
+         
     </div>
   )
 }
