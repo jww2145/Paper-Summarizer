@@ -38,7 +38,6 @@ input[type = submit]{
     position:relative;
     margin:auto;
     margin-top: 0.5%;;
-    
 }
 
 #largeForm{
@@ -184,4 +183,10 @@ background-color: #2d2d2b;
     align-items: center;
     justify-content: space-evenly;
     row-gap: 20px;
+}
+
+#ner-button{
+    margin-top:.5%;
+    background-color:#d4c8be;
+    border: 1px solid #b0b0b0;
 }

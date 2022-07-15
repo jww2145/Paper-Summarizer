@@ -42,7 +42,7 @@ function Named() {
     </Spinner>}
         {!displayActive && <Ner  setDisplayActive = {setDisplayActive} recognizeEntity={recognizeEntity} setSpinner={setSpinner}/>}
         {displayActive && <ChartContainer  data={output}/>}
-        {displayActive && <button type='button' onClick = {handleClick}>Go Back</button>}
+        {displayActive && <button type='button' id = "ner-button" onClick = {handleClick}>Go Back</button>}
 
     </div>
   )
