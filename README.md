@@ -6,7 +6,7 @@ Using Intellexer's Language-Processing API (https://www.intellexer.com/), we wer
 
 If you wish to experiment for yourself, you will need an API key and place it in a .env file. Fortunately, Intellexer does offer a 30-day free trial (you will not be charged after 30 days. Instead, your key will be suspended). 
 
-The only required dependency are styled-components (https://www.npmjs.com/package/styled-components) 
+The only required dependencies are styled-components (https://www.npmjs.com/package/styled-components) and mui (https://www.npmjs.com/package/@mui/material)
 
 ## Using Research Helper 
 
