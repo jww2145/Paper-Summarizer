@@ -9,10 +9,11 @@ function Copy() {
     const [displayActive, setDisplayActive] = useState(false)
     const [spinner, setSpinner] = useState(false)
 
-    const summarizePaste = (article) => {
-        fetch(`https://api.intellexer.com/summarizeText?apikey=${process.env.REACT_APP_API_KEY}&conceptsRestriction=7&returnedTopicsCount=2&summaryRestriction=7&textStreamLength=1000`,{
+
+    const summarizePaste = (article, sentence, characters) => {
+        fetch(`https://api.intellexer.com/summarizeText?apikey=${process.env.REACT_APP_API_KEY}&conceptsRestriction=${sentence}&summaryRestriction=${sentence}&textStreamLength=${characters}`,{
             method: 'POST',
-            body: JSON.stringify(article)
+            body: JSON.stringify(article.trim())
         })
         .then(res => res.json())
         .then(data => {
